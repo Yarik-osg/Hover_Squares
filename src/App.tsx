@@ -2,12 +2,13 @@ import React, {useEffect, useState} from 'react';
 import {Button, Select, Typography} from 'antd';
 import {BigSquare} from "./components/BigSquare/bigSquare";
 import {getData} from "./components/Fetch/fetchData";
+
 interface Options {
     label: string;
     value: string;
 }
 
-function App() {
+const App = () => {
     const [options, setOptions] = useState<Options[]>([]);
     const [selectedMode, setSelectedMode] = useState<string | null>(null);
     const [disabledButton, setDisabledButton] = useState<boolean>(true);
@@ -33,7 +34,7 @@ function App() {
         setDisabledButton(true)
     };
 
-    useEffect( () => {//get data from fetchData file
+    useEffect(() => {//get data from fetchData file
         getData()
             .then((options) => {
                 setOptions(options);
